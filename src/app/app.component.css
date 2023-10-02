@@ -1,0 +1,17 @@
+body{
+    position: relative;
+    background-color: linear-gradient(60deg, #60affff2 0%, #fff 100%);
+    display: flex;
+}
+app-stock-tracker{
+    width: 50%;
+}
+app-create-stock{
+    padding-top: 30px;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; 
+}

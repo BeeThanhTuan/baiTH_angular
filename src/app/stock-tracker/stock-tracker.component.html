@@ -1,0 +1,27 @@
+<div class="stockTracker">
+    <p>StockTracker</p>
+</div>
+<div class="trackers">
+    
+    <div class="info-tracker" *ngFor="let tracker of trackers, index as i" 
+        [style.background]="tracker.previousPrice> tracker.price ? 'lightgreen': 'lightpink'">
+        <p>{{tracker.name}}</p>
+        <p>${{tracker.previousPrice}}</p>
+        <p *ngIf="tracker.previousPrice > tracker.price">
+            ${{(tracker.previousPrice - tracker.price).toFixed(2)}} ({{ ((tracker.previousPrice-tracker.price)/tracker.price*100).toFixed(2)}}%)</p>
+        <p *ngIf="tracker.previousPrice < tracker.price">
+            -${{((tracker.previousPrice - tracker.price)*(-1)).toFixed(2)}} ({{ ((tracker.previousPrice-tracker.price)/tracker.price*100).toFixed(2)}}%)</p>
+        <button class="favourite" type="button" [disabled]="tracker.favorite" (click)="toggleFavourite($event, i)"> 
+            Add to Favorite
+        </button>
+    </div>
+    
+</div>
+<div class="listFavourite">
+    <ul class="listFavourites">
+        <li *ngFor="let item of listFavorites, index as i">
+            <p>{{item.name}}</p>
+            <button type="button" (click)="removeFavourite($event, i)" >Remove</button>
+        </li>
+    </ul>
+</div>
